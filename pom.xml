@@ -4,7 +4,7 @@
 
 	<groupId>org.javastack</groupId>
 	<artifactId>pomfar</artifactId>
-	<version>1.0.0</version>
+	<version>1.1.0</version>
 	<description>pomfar is a tool to display maven pom files directly from jar/war/zip files</description>
 
 	<name>${project.groupId}:${project.artifactId}</name>

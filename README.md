@@ -2,7 +2,7 @@
 
 pomfar is a tool to display maven pom files directly from jar/war/zip files, free as beer and open source (Apache License, Version 2.0). Do not require any external lib.
 
-### Current Stable Version is [1.0.0](https://maven-release.s3.amazonaws.com/release/org/javastack/pomfar/1.0.0/pomfar-1.0.0-bin.zip)
+### Current Stable Version is [1.1.0](https://maven-release.s3.amazonaws.com/release/org/javastack/pomfar/1.1.0/pomfar-1.1.0-bin.zip)
 
 ---
 

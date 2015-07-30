@@ -15,10 +15,11 @@
 package org.javastack.pomfar;
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Enumeration;
 import java.util.zip.ZipEntry;
-import java.util.zip.ZipInputStream;
+import java.util.zip.ZipFile;
 
 public class PomFar {
 	/**
@@ -44,29 +45,31 @@ public class PomFar {
 
 	public static void main(final String[] args) throws Throwable {
 		for (final String file : args) {
-			ZipInputStream is = null;
+			if (!quiet) {
+				System.out.println("### Scanning: " + file);
+			}
+			ZipFile zf = null;
 			try {
-				is = new ZipInputStream(new FileInputStream(file));
-				if (!quiet) {
-					System.out.println("### Scanning: " + file);
-				}
-				ZipEntry e = null;
-				while ((e = is.getNextEntry()) != null) {
+				zf = new ZipFile(file);
+				final Enumeration<? extends ZipEntry> ze = zf.entries();
+				while (ze.hasMoreElements()) {
+					final ZipEntry e = ze.nextElement();
 					if (!e.isDirectory() && isPom(e.getName())) {
 						if (!quiet) {
 							System.out.println("### Found: " + e.getName());
 						}
+						final InputStream is = zf.getInputStream(e);
 						final BufferedReader in = new BufferedReader(new InputStreamReader(is));
 						String line = null;
 						while ((line = in.readLine()) != null) {
 							System.out.println(line);
 						}
+						is.close();
 					}
-					is.closeEntry();
 				}
 			} finally {
-				if (is != null) {
-					is.close();
+				if (zf != null) {
+					zf.close();
 				}
 			}
 		}
