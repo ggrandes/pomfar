@@ -21,7 +21,6 @@ PRGDIR=$(dirname "$PRG")
 POMFAR_CLASSPATH=$(echo $POMFAR_HOME/lib/*.jar | tr ' ' ':')
 #
 do_run () {
-  cd ${POMFAR_HOME}
   java -Dprogram.name=pomfar ${POMFAR_OPTS} \
     -cp "${POMFAR_CLASSPATH}" \
     org.javastack.pomfar.PomFar $*
