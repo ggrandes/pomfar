@@ -12,7 +12,8 @@ pomfar is a tool to display maven pom files directly from jar/war/zip files, fre
     
 ## Extended usage:
 
-    env POMFAR_OPTS="-Dpomfar.get.quiet=true -Dpomfar.get.properties=false -Dpomfar.get.xml=true" ./bin/pomfar.sh <file.jar|war|zip>
+    env POMFAR_OPTS="-Dpomfar.quiet=true -Dpomfar.get.properties=false -Dpomfar.get.xml=true" \
+      ./bin/pomfar.sh <file.jar|war|zip>
 
 ---
 Inspired in [zcat](http://linux.die.net/man/1/zcat) and [jar](http://docs.oracle.com/javase/1.5.0/docs/tooldocs/windows/jar.html), this is a Java-minimalistic version.

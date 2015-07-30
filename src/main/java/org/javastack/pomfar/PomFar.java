@@ -24,7 +24,7 @@ public class PomFar {
 	/**
 	 * Enable Quiet Mode (default: false)
 	 */
-	public static final String PROP_QUIET = "pomfar.get.quiet";
+	public static final String PROP_QUIET = "pomfar.quiet";
 	/**
 	 * Get pom.xml? (default: false)
 	 */
