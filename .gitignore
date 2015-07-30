@@ -1,0 +1,5 @@
+bin
+.metadata
+.settings
+target
+src/main/resources/*.properties
