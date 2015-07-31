@@ -27,20 +27,17 @@ public class PomFar {
 	 */
 	public static final String PROP_QUIET = "pomfar.quiet";
 	/**
-	 * Get pom.xml? (default: false)
+	 * What file want? (default: pom.properties)
 	 */
-	public static final String PROP_XML = "pomfar.get.xml";
-	/**
-	 * Get pom.properties? (default: true)
-	 */
-	public static final String PROP_PROPERTIES = "pomfar.get.properties";
+	public static final String PROP_FILE = "pomfar.file";
 
 	private static final boolean quiet = Boolean.valueOf(System.getProperty(PROP_QUIET, "false"));
-	private static final boolean getXml = Boolean.valueOf(System.getProperty(PROP_XML, "false"));
-	private static final boolean getProperties = Boolean.valueOf(System.getProperty(PROP_PROPERTIES, "true"));
+	private static final String theFile = System.getProperty(PROP_FILE, "pom.properties");
+	private static final String theFileA = '/' + theFile;
+	private static final String theFileB = '\\' + theFile;
 
-	private static boolean isPom(final String name) {
-		return ((getProperties && name.endsWith("pom.properties")) || (getXml && name.endsWith("pom.xml")));
+	private static boolean isTheFile(final String name) {
+		return name.endsWith(theFileA) || name.endsWith(theFileB);
 	}
 
 	public static void main(final String[] args) throws Throwable {
@@ -54,7 +51,7 @@ public class PomFar {
 				final Enumeration<? extends ZipEntry> ze = zf.entries();
 				while (ze.hasMoreElements()) {
 					final ZipEntry e = ze.nextElement();
-					if (!e.isDirectory() && isPom(e.getName())) {
+					if (!e.isDirectory() && isTheFile(e.getName())) {
 						if (!quiet) {
 							System.out.println("### Found: " + e.getName());
 						}

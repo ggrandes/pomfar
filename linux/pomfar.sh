@@ -1,5 +1,5 @@
 #!/bin/bash
-POMFAR_OPTS_DEF="-Dpomfar.get.properties=true -Dpomfar.get.xml=false"
+POMFAR_OPTS_DEF="-Dpomfar.file=pom.properties"
 POMFAR_OPTS="${POMFAR_OPTS:-${POMFAR_OPTS_DEF}}"
 #
 # resolve links - $0 may be a softlink
